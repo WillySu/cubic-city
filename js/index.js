@@ -1,4 +1,4 @@
-const UNIT = 16;
+const UNIT = 6;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000022);
@@ -29,7 +29,12 @@ function init () {
   const geometry = new THREE.BoxGeometry(UNIT * 3, 1, UNIT * 3);
   const material = new THREE.MeshBasicMaterial({ color: 0x008800, opacity: 0.25, transparent: true });
   const plane = new THREE.Mesh(geometry, material);
+  plane.position.set(0, -0.5, 0);
   scene.add(plane);
+
+  const buildingBlock = getBuildingBlock()
+  buildingBlock.position.set(0, 1.5, 0);
+  scene.add(buildingBlock);
 
   resize();
   document.body.appendChild(renderer.domElement);
